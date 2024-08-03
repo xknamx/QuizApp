@@ -20,6 +20,8 @@ namespace QuizApp
         public Form1()
         {
             InitializeComponent();
+            LoadQuestion();
+            DisplayQuestion();
         }
 
         private void LoadQuestion()
@@ -53,7 +55,30 @@ namespace QuizApp
         private void DisplayQuestion()
             //クイズをフォームに表示するメソッド
         {
+            if(currentQuestionIndex<questions.Count)
+                //現在のクイズの問題番号がquestionリストの要素数よりも小さければ
+            {
+                var question = questions[currentQuestionIndex];
+                //questionリストのうち現在の問題番号の要素をquestion変数として取り出し、
 
+                //questionLabelに問題文を表示
+                questionLabel.Text = question.Text;            
+                 
+                //ラジオボタンにそれぞれ設定した4択を順番に表示
+                option1RadioButton.Text = question.Options[0]; 
+                option2RadioButton.Text = question.Options[1];
+                option3RadioButton.Text = question.Options[2];
+                option4RadioButton.Text = question.Options[3];
+            }
+            else  //現在の問題番号がquestionリストの要素数以上の値
+            {
+                questionLabel.Text = "これ以上の質問はありません";
+                option1RadioButton.Visible = false;
+                option2RadioButton.Visible = false;
+                option3RadioButton.Visible = false;
+                option4RadioButton.Visible = false;
+                submitButton.Visible = false;
+            }
         }
 
         private void SubmitButton_Click(object sender, EventArgs e)

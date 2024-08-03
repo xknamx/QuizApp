@@ -40,12 +40,12 @@
             // questionLabel
             // 
             this.questionLabel.AutoSize = true;
-            this.questionLabel.Location = new System.Drawing.Point(134, 19);
+            this.questionLabel.Location = new System.Drawing.Point(71, 24);
             this.questionLabel.Name = "questionLabel";
             this.questionLabel.Size = new System.Drawing.Size(43, 15);
             this.questionLabel.TabIndex = 0;
             this.questionLabel.Text = "label1";
-            this.questionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.questionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // option1RadioButton
             // 
@@ -93,9 +93,9 @@
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(98, 235);
+            this.submitButton.Location = new System.Drawing.Point(74, 234);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(110, 37);
+            this.submitButton.Size = new System.Drawing.Size(155, 37);
             this.submitButton.TabIndex = 5;
             this.submitButton.Text = "確認する";
             this.submitButton.UseVisualStyleBackColor = true;
@@ -115,7 +115,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(313, 354);
+            this.ClientSize = new System.Drawing.Size(297, 354);
             this.Controls.Add(this.resultLabel);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.option4RadioButton);
