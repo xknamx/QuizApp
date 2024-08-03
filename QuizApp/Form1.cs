@@ -14,6 +14,8 @@ namespace QuizApp
     {
         private List<Question> questions;
         //Questionクラスを格納するリストquestionsの領域を確保する
+        private int currentQuestionIndex;
+        //現在のクイズ番号示す値
 
         public Form1()
         {
@@ -42,7 +44,16 @@ namespace QuizApp
                 }
 
                 //ここに質問を追加
+
+                
             };
+            currentQuestionIndex = 0;
+        }
+
+        private void DisplayQuestion()
+            //クイズをフォームに表示するメソッド
+        {
+
         }
 
         private void SubmitButton_Click(object sender, EventArgs e)
