@@ -40,7 +40,7 @@
             // questionLabel
             // 
             this.questionLabel.AutoSize = true;
-            this.questionLabel.Location = new System.Drawing.Point(71, 24);
+            this.questionLabel.Location = new System.Drawing.Point(50, 23);
             this.questionLabel.Name = "questionLabel";
             this.questionLabel.Size = new System.Drawing.Size(43, 15);
             this.questionLabel.TabIndex = 0;
@@ -50,7 +50,7 @@
             // option1RadioButton
             // 
             this.option1RadioButton.AutoSize = true;
-            this.option1RadioButton.Location = new System.Drawing.Point(98, 67);
+            this.option1RadioButton.Location = new System.Drawing.Point(113, 67);
             this.option1RadioButton.Name = "option1RadioButton";
             this.option1RadioButton.Size = new System.Drawing.Size(110, 19);
             this.option1RadioButton.TabIndex = 1;
@@ -61,7 +61,7 @@
             // option2RadioButton
             // 
             this.option2RadioButton.AutoSize = true;
-            this.option2RadioButton.Location = new System.Drawing.Point(98, 105);
+            this.option2RadioButton.Location = new System.Drawing.Point(113, 106);
             this.option2RadioButton.Name = "option2RadioButton";
             this.option2RadioButton.Size = new System.Drawing.Size(110, 19);
             this.option2RadioButton.TabIndex = 2;
@@ -72,7 +72,7 @@
             // option3RadioButton
             // 
             this.option3RadioButton.AutoSize = true;
-            this.option3RadioButton.Location = new System.Drawing.Point(98, 145);
+            this.option3RadioButton.Location = new System.Drawing.Point(113, 145);
             this.option3RadioButton.Name = "option3RadioButton";
             this.option3RadioButton.Size = new System.Drawing.Size(110, 19);
             this.option3RadioButton.TabIndex = 3;
@@ -83,7 +83,7 @@
             // option4RadioButton
             // 
             this.option4RadioButton.AutoSize = true;
-            this.option4RadioButton.Location = new System.Drawing.Point(98, 184);
+            this.option4RadioButton.Location = new System.Drawing.Point(113, 184);
             this.option4RadioButton.Name = "option4RadioButton";
             this.option4RadioButton.Size = new System.Drawing.Size(110, 19);
             this.option4RadioButton.TabIndex = 4;
@@ -93,7 +93,7 @@
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(74, 234);
+            this.submitButton.Location = new System.Drawing.Point(88, 233);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(155, 37);
             this.submitButton.TabIndex = 5;
@@ -104,18 +104,17 @@
             // resultLabel
             // 
             this.resultLabel.AutoSize = true;
-            this.resultLabel.Location = new System.Drawing.Point(134, 292);
+            this.resultLabel.Location = new System.Drawing.Point(50, 289);
             this.resultLabel.Name = "resultLabel";
-            this.resultLabel.Size = new System.Drawing.Size(22, 15);
+            this.resultLabel.Size = new System.Drawing.Size(0, 15);
             this.resultLabel.TabIndex = 6;
-            this.resultLabel.Text = "仮";
-            this.resultLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.resultLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(297, 354);
+            this.ClientSize = new System.Drawing.Size(323, 354);
             this.Controls.Add(this.resultLabel);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.option4RadioButton);

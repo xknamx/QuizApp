@@ -53,19 +53,19 @@ namespace QuizApp
         }
 
         private void DisplayQuestion()
-            //クイズをフォームに表示するメソッド
+        //クイズをフォームに表示するメソッド
         {
-            if(currentQuestionIndex<questions.Count)
-                //現在のクイズの問題番号がquestionリストの要素数よりも小さければ
+            if (currentQuestionIndex < questions.Count)
+            //現在のクイズの問題番号がquestionリストの要素数よりも小さければ
             {
                 var question = questions[currentQuestionIndex];
                 //questionリストのうち現在の問題番号の要素をquestion変数として取り出し、
 
                 //questionLabelに問題文を表示
-                questionLabel.Text = question.Text;            
-                 
+                questionLabel.Text = question.Text;
+
                 //ラジオボタンにそれぞれ設定した4択を順番に表示
-                option1RadioButton.Text = question.Options[0]; 
+                option1RadioButton.Text = question.Options[0];
                 option2RadioButton.Text = question.Options[1];
                 option3RadioButton.Text = question.Options[2];
                 option4RadioButton.Text = question.Options[3];
@@ -83,6 +83,33 @@ namespace QuizApp
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
+            var question = questions[currentQuestionIndex];
+            //questionリストのうち現在の問題番号の要素をquestion変数として取り出す
+            int selectOption = -1;
+            //選択中の回答の値（初期値は-1を代入）
+
+            if (option1RadioButton.Checked) selectOption = 0;
+            if (option2RadioButton.Checked) selectOption = 1;
+            if (option3RadioButton.Checked) selectOption = 2;
+            if (option4RadioButton.Checked) selectOption = 3;
+           //それぞれ選択中のラジオボタンに応じて選択中の回答の値を代入しなおす
+           //◆if文の内容が１行なら｛｝は省略できる
+
+            if (selectOption==question.CorrectOption)
+                //選択中の回答の値が設定した回答の値と同じなら
+            {
+                resultLabel.Text = "正解！";
+            }
+            else
+            {
+                resultLabel.Text = "不正解。正しい答えは：" + question.Options[question.CorrectOption];
+                //間違っていれば四択配列から回答番目の要素を取り出して表示する
+            }
+
+            currentQuestionIndex++;
+            //問題番号の値を１増やす
+            DisplayQuestion();
+            //DisplayQuestionメソッドを呼び出して次の問題を表示させる
 
         }
     }
