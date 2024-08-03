@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace QuizApp
 {
@@ -41,7 +44,7 @@ namespace QuizApp
             {
                 MessageBox.Show("入力に誤りがあります");
             }
-
+            SaveDate();
         }
         public int SelectedAns()
         {
@@ -109,6 +112,7 @@ namespace QuizApp
                     row["選択肢４"].ToString()
                 };
 
+
                 questions.Add(new Question
                 {
                     Text = row["問題文"].ToString(),
@@ -116,8 +120,37 @@ namespace QuizApp
                     CorrectOption = (int)row["回答番号"]
                 });
             }
+            var json = JsonConvert.SerializeObject(questions, Newtonsoft.Json.Formatting.Indented);
+
+            //JSON文字列（json変数の値）をファイルに書き込む
+            File.WriteAllText(@"..\..\クイズデータ.json", json);
 
         }
 
+        //JSONファイルからデータを読み込んでDatesetに収納するメソッド
+        private void RoadDate()
+        {
+            //JSONファイルが存在する場合、読み込み処理を行う
+            if (File.Exists(@"..\..\クイズデータ.json"))
+            {
+                //jsonファイル内のデータを読み込んで文字列型としてjson変数に代入
+                var json = File.ReadAllText(@"..\..\クイズデータ.json");
 
+                //読み取ったJSON文字列をBook型のリストbooksにデシリアライズ
+                var questions = JsonConvert.DeserializeObject<List<Question>>(json);
+
+                //booksリストに格納した内容をDateTableに追加
+                foreach (var question in questions)
+                {
+                    quizDataSet.quizDataTable.AddquizDataTableRow(
+                    question.Text,
+                    question.Options,
+                    question.CorrectOption);
+
+                }
+            }
+        }
     }
+
+}
+
