@@ -28,7 +28,7 @@ namespace QuizApp
         //クイズの内容を読み込むメソッド
         {
             questions = new List<Question>
-            { 
+            {
                 new Question("日本の首都はどこですか？",new string[] { "大阪", "東京", "京都", "福岡" }, 1),
                 new Question("次のうち、２＋２の答えはどれですか？",new string[] {"3","4","5","6" }, 1)
                 
@@ -56,12 +56,7 @@ namespace QuizApp
             else  //現在の問題番号がquestionリストの要素数以上の値
             {
                 //問題が残っていないことを示すメソッドを呼び出す
-                questionLabel.Text = "これ以上の質問はありません";
-                option1RadioButton.Visible = false;
-                option2RadioButton.Visible = false;
-                option3RadioButton.Visible = false;
-                option4RadioButton.Visible = false;
-                submitButton.Visible = false;
+                showEndOfQuiz();
             }
         }
 
@@ -73,24 +68,26 @@ namespace QuizApp
             option4RadioButton.Text = options[3];
         }
 
-
+        private void showEndOfQuiz()
+        {
+            questionLabel.Text = "これ以上の質問はありません";
+            option1RadioButton.Visible = false;
+            option2RadioButton.Visible = false;
+            option3RadioButton.Visible = false;
+            option4RadioButton.Visible = false;
+            submitButton.Visible = false;
+        }
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
             var question = questions[currentQuestionIndex];
             //questionリストのうち現在の問題番号の要素をquestion変数として取り出す
-            int selectOption = -1;
-            //選択中の回答の値（初期値は-1を代入）
 
-            if (option1RadioButton.Checked) selectOption = 0;
-            if (option2RadioButton.Checked) selectOption = 1;
-            if (option3RadioButton.Checked) selectOption = 2;
-            if (option4RadioButton.Checked) selectOption = 3;
-           //それぞれ選択中のラジオボタンに応じて選択中の回答の値を代入しなおす
-           //◆if文の内容が１行なら｛｝は省略できる
+            int selectOption = GetSelectedOption();
+            //選択中のラジオボタンに応じて選択中の回答の値を代入するメソッドの戻り値を代入
 
-            if (selectOption==question.CorrectOption)
-                //選択中の回答の値が設定した回答の値と同じなら
+            if (selectOption == question.CorrectOption)
+            //選択中の回答の値が設定した回答の値と同じなら
             {
                 resultLabel.Text = "正解！";
             }
@@ -105,6 +102,19 @@ namespace QuizApp
             DisplayQuestion();
             //DisplayQuestionメソッドを呼び出して次の問題を表示させる
 
+        }
+
+        private int GetSelectedOption()
+        {
+            //選択中のラジオボタンに応じて回答番号の値をint型で返すメソッド
+            if (option1RadioButton.Checked) return 0;
+            if (option2RadioButton.Checked) return 1;
+            if (option3RadioButton.Checked) return 2;
+            if (option4RadioButton.Checked) return 3;
+            //◆if文の内容が１行なら｛｝は省略できる
+
+            return -1;
+            //当てはまらない場合は-1を返す
         }
     }
 
