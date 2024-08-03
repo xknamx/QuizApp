@@ -35,6 +35,7 @@ namespace QuizApp
                 //ここに質問を追加
             };
             currentQuestionIndex = 0;
+            //現在の問題番号の初期値に0を代入
         }
 
         private void DisplayQuestion()
@@ -49,14 +50,12 @@ namespace QuizApp
                 //questionLabelに問題文を表示
                 questionLabel.Text = question.Text;
 
-                //ラジオボタンにそれぞれ設定した4択を順番に表示
-                option1RadioButton.Text = question.Options[0];
-                option2RadioButton.Text = question.Options[1];
-                option3RadioButton.Text = question.Options[2];
-                option4RadioButton.Text = question.Options[3];
+                //設定した4択を渡してラジオボタンに表示させるメソッドを呼び出す
+                DisplayOptions(question.Options);
             }
             else  //現在の問題番号がquestionリストの要素数以上の値
             {
+                //問題が残っていないことを示すメソッドを呼び出す
                 questionLabel.Text = "これ以上の質問はありません";
                 option1RadioButton.Visible = false;
                 option2RadioButton.Visible = false;
@@ -65,6 +64,16 @@ namespace QuizApp
                 submitButton.Visible = false;
             }
         }
+
+        private void DisplayOptions(string[] options)
+        {
+            option1RadioButton.Text = options[0];
+            option2RadioButton.Text = options[1];
+            option3RadioButton.Text = options[2];
+            option4RadioButton.Text = options[3];
+        }
+
+
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
