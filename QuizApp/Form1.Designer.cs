@@ -99,6 +99,7 @@
             this.submitButton.TabIndex = 5;
             this.submitButton.Text = "確認する";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
             // resultLabel
             // 

@@ -12,9 +12,25 @@ namespace QuizApp
 {
     public partial class Form1 : Form
     {
+        private List<Question> questions;
+        //Questionクラスを格納するリストquestionsの領域を確保する
+
         public Form1()
         {
             InitializeComponent();
         }
+
+        private void SubmitButton_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+
+    //クイズ文、選択支リスト、回答番号の設定を保持するQuestionクラス
+    public class Question
+    {
+        public string Text { get; set; }
+        public string[] Options { get; set; }
+        public int CorrectOption { get; set; }
     }
 }
