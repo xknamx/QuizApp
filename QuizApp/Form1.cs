@@ -16,6 +16,7 @@ namespace QuizApp
         //Questionクラスを格納するリストquestionsの領域を確保する
         private int currentQuestionIndex;
         //現在のクイズ番号示す値
+        QuizListManager quizListManager;
 
         public Form1()
         {
@@ -116,6 +117,30 @@ namespace QuizApp
             return -1;
             //当てはまらない場合は-1を返す
         }
+
+
+
+
+        private void ExitMenuClicked(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void quizManagerViewClicked(object sender, EventArgs e)
+        {
+            if (quizListManager.Visible != true)
+            {
+                //palletウィンドウが開いてない場合は新しくインスタンスを生成して開きなおす
+                this.quizListManager = new QuizListManager();
+                quizListManager.Show();
+            }
+            else
+            {
+                //そうでなければ開いているpalletウィンドウにフォーカスをあてる
+                quizListManager.Activate();
+            }
+
+        }
     }
 
     //クイズ文、選択支リスト、回答番号の設定を保持するQuestionクラス
@@ -131,5 +156,7 @@ namespace QuizApp
             Options = options;
             CorrectOption = correctOption;
         }
+
     }
+
 }

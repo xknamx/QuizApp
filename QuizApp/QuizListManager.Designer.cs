@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.quizDataGrid = new System.Windows.Forms.DataGridView();
+            this.questionTextBox = new System.Windows.Forms.TextBox();
+            this.ans1TextBox = new System.Windows.Forms.TextBox();
+            this.ans3TextBox = new System.Windows.Forms.TextBox();
+            this.ans2TextBox = new System.Windows.Forms.TextBox();
+            this.ans4TextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.ansRadioButton1 = new System.Windows.Forms.RadioButton();
@@ -45,6 +45,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.addButton = new System.Windows.Forms.Button();
+            this.removeButton = new System.Windows.Forms.Button();
             this.問題文DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.選択肢１DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.選択肢２DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,67 +55,67 @@
             this.回答番号DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quizDataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.quizDataSet = new QuizApp.QuizDataSet();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quizDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quizDataTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quizDataSet)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // quizDataGrid
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.quizDataGrid.AllowUserToOrderColumns = true;
+            this.quizDataGrid.AutoGenerateColumns = false;
+            this.quizDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.quizDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.quizDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.問題文DataGridViewTextBoxColumn,
             this.選択肢１DataGridViewTextBoxColumn,
             this.選択肢２DataGridViewTextBoxColumn,
             this.選択肢３DataGridViewTextBoxColumn,
             this.選択肢４DataGridViewTextBoxColumn,
             this.回答番号DataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.quizDataTableBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 30);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(801, 150);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.quizDataGrid.DataSource = this.quizDataTableBindingSource;
+            this.quizDataGrid.Location = new System.Drawing.Point(12, 30);
+            this.quizDataGrid.Name = "quizDataGrid";
+            this.quizDataGrid.RowHeadersWidth = 51;
+            this.quizDataGrid.RowTemplate.Height = 24;
+            this.quizDataGrid.Size = new System.Drawing.Size(801, 150);
+            this.quizDataGrid.TabIndex = 0;
+            this.quizDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // textBox1
+            // questionTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(127, 219);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(516, 22);
-            this.textBox1.TabIndex = 1;
+            this.questionTextBox.Location = new System.Drawing.Point(127, 219);
+            this.questionTextBox.Name = "questionTextBox";
+            this.questionTextBox.Size = new System.Drawing.Size(686, 22);
+            this.questionTextBox.TabIndex = 1;
             // 
-            // textBox2
+            // ans1TextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(127, 283);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(387, 22);
-            this.textBox2.TabIndex = 2;
+            this.ans1TextBox.Location = new System.Drawing.Point(127, 283);
+            this.ans1TextBox.Name = "ans1TextBox";
+            this.ans1TextBox.Size = new System.Drawing.Size(387, 22);
+            this.ans1TextBox.TabIndex = 2;
             // 
-            // textBox3
+            // ans3TextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(127, 339);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(387, 22);
-            this.textBox3.TabIndex = 3;
+            this.ans3TextBox.Location = new System.Drawing.Point(127, 339);
+            this.ans3TextBox.Name = "ans3TextBox";
+            this.ans3TextBox.Size = new System.Drawing.Size(387, 22);
+            this.ans3TextBox.TabIndex = 3;
             // 
-            // textBox4
+            // ans2TextBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(127, 311);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(387, 22);
-            this.textBox4.TabIndex = 4;
+            this.ans2TextBox.Location = new System.Drawing.Point(127, 311);
+            this.ans2TextBox.Name = "ans2TextBox";
+            this.ans2TextBox.Size = new System.Drawing.Size(387, 22);
+            this.ans2TextBox.TabIndex = 4;
             // 
-            // textBox5
+            // ans4TextBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(127, 367);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(387, 22);
-            this.textBox5.TabIndex = 5;
+            this.ans4TextBox.Location = new System.Drawing.Point(127, 367);
+            this.ans4TextBox.Name = "ans4TextBox";
+            this.ans4TextBox.Size = new System.Drawing.Size(387, 22);
+            this.ans4TextBox.TabIndex = 5;
             // 
             // label1
             // 
@@ -136,7 +138,7 @@
             // ansRadioButton1
             // 
             this.ansRadioButton1.AutoSize = true;
-            this.ansRadioButton1.Location = new System.Drawing.Point(533, 286);
+            this.ansRadioButton1.Location = new System.Drawing.Point(533, 289);
             this.ansRadioButton1.Name = "ansRadioButton1";
             this.ansRadioButton1.Size = new System.Drawing.Size(17, 16);
             this.ansRadioButton1.TabIndex = 9;
@@ -146,7 +148,7 @@
             // ansRadioButton2
             // 
             this.ansRadioButton2.AutoSize = true;
-            this.ansRadioButton2.Location = new System.Drawing.Point(533, 314);
+            this.ansRadioButton2.Location = new System.Drawing.Point(533, 317);
             this.ansRadioButton2.Name = "ansRadioButton2";
             this.ansRadioButton2.Size = new System.Drawing.Size(17, 16);
             this.ansRadioButton2.TabIndex = 10;
@@ -156,7 +158,7 @@
             // ansRadioButton3
             // 
             this.ansRadioButton3.AutoSize = true;
-            this.ansRadioButton3.Location = new System.Drawing.Point(533, 340);
+            this.ansRadioButton3.Location = new System.Drawing.Point(533, 345);
             this.ansRadioButton3.Name = "ansRadioButton3";
             this.ansRadioButton3.Size = new System.Drawing.Size(17, 16);
             this.ansRadioButton3.TabIndex = 11;
@@ -208,6 +210,26 @@
             this.label6.Size = new System.Drawing.Size(17, 15);
             this.label6.TabIndex = 16;
             this.label6.Text = "４";
+            // 
+            // addButton
+            // 
+            this.addButton.Location = new System.Drawing.Point(641, 283);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(172, 50);
+            this.addButton.TabIndex = 17;
+            this.addButton.Text = "追加";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButtonClicked);
+            // 
+            // removeButton
+            // 
+            this.removeButton.Location = new System.Drawing.Point(641, 340);
+            this.removeButton.Name = "removeButton";
+            this.removeButton.Size = new System.Drawing.Size(172, 50);
+            this.removeButton.TabIndex = 18;
+            this.removeButton.Text = "削除";
+            this.removeButton.UseVisualStyleBackColor = true;
+            this.removeButton.Click += new System.EventHandler(this.RemoveButtonClicked);
             // 
             // 問題文DataGridViewTextBoxColumn
             // 
@@ -266,6 +288,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(852, 450);
+            this.Controls.Add(this.removeButton);
+            this.Controls.Add(this.addButton);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -276,15 +300,15 @@
             this.Controls.Add(this.ansRadioButton1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.ans4TextBox);
+            this.Controls.Add(this.ans2TextBox);
+            this.Controls.Add(this.ans3TextBox);
+            this.Controls.Add(this.ans1TextBox);
+            this.Controls.Add(this.questionTextBox);
+            this.Controls.Add(this.quizDataGrid);
             this.Name = "QuizListManager";
             this.Text = "QuizListManager";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quizDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quizDataTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quizDataSet)).EndInit();
             this.ResumeLayout(false);
@@ -294,7 +318,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView quizDataGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn 問題文DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 選択肢１DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 選択肢２DataGridViewTextBoxColumn;
@@ -303,11 +327,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 回答番号DataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource quizDataTableBindingSource;
         private QuizDataSet quizDataSet;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox questionTextBox;
+        private System.Windows.Forms.TextBox ans1TextBox;
+        private System.Windows.Forms.TextBox ans3TextBox;
+        private System.Windows.Forms.TextBox ans2TextBox;
+        private System.Windows.Forms.TextBox ans4TextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton ansRadioButton1;
@@ -318,5 +342,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Button removeButton;
     }
 }
