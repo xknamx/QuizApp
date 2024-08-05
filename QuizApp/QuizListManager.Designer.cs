@@ -219,7 +219,7 @@
             this.addButton.TabIndex = 17;
             this.addButton.Text = "追加";
             this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Click += new System.EventHandler(this.addButtonClicked);
+            //this.addButton.Click += new System.EventHandler(this.addButtonClicked);
             // 
             // removeButton
             // 

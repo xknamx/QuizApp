@@ -18,6 +18,8 @@ namespace QuizApp
         public QuizListManager()
         {
             InitializeComponent();
+            RoadDate();
+
 
         }
 
@@ -142,10 +144,16 @@ namespace QuizApp
                 //booksリストに格納した内容をDateTableに追加
                 foreach (var question in questions)
                 {
+                    var option1 = question.Options[0];
+                    var option2 = question.Options[1];
+                    var option3 = question.Options[2];
+                    var option4 = question.Options[3];
+
                     quizDataSet.quizDataTable.AddquizDataTableRow(
-                    question.Text,
-                    question.Options,
-                    question.CorrectOption);
+                        question.Text,
+                        option1,option2,option3,option4,
+                        question.CorrectOption.ToString());
+                    
 
                 }
             }
