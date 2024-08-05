@@ -36,8 +36,9 @@
             this.選択肢３DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.選択肢４DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.回答番号DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quizDataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.quizDataTableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.quizDataSet = new QuizApp.QuizDataSet();
+            this.quizDataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.questionTextBox = new System.Windows.Forms.TextBox();
             this.ans1TextBox = new System.Windows.Forms.TextBox();
             this.ans3TextBox = new System.Windows.Forms.TextBox();
@@ -55,15 +56,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();
             this.removeButton = new System.Windows.Forms.Button();
-            this.quizDataTableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.quizDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quizDataTableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quizDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quizDataTableBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quizDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quizDataTableBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // quizDataGrid
             // 
+            this.quizDataGrid.AllowUserToAddRows = false;
+            this.quizDataGrid.AllowUserToDeleteRows = false;
             this.quizDataGrid.AllowUserToOrderColumns = true;
             this.quizDataGrid.AutoGenerateColumns = false;
             this.quizDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -78,8 +80,10 @@
             this.quizDataGrid.DataSource = this.quizDataTableBindingSource1;
             this.quizDataGrid.Location = new System.Drawing.Point(12, 30);
             this.quizDataGrid.Name = "quizDataGrid";
+            this.quizDataGrid.ReadOnly = true;
             this.quizDataGrid.RowHeadersWidth = 51;
             this.quizDataGrid.RowTemplate.Height = 24;
+            this.quizDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.quizDataGrid.Size = new System.Drawing.Size(801, 150);
             this.quizDataGrid.TabIndex = 0;
             // 
@@ -89,6 +93,7 @@
             this.問題文DataGridViewTextBoxColumn.HeaderText = "問題文";
             this.問題文DataGridViewTextBoxColumn.MinimumWidth = 6;
             this.問題文DataGridViewTextBoxColumn.Name = "問題文DataGridViewTextBoxColumn";
+            this.問題文DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // 選択肢１DataGridViewTextBoxColumn
             // 
@@ -96,6 +101,7 @@
             this.選択肢１DataGridViewTextBoxColumn.HeaderText = "選択肢１";
             this.選択肢１DataGridViewTextBoxColumn.MinimumWidth = 6;
             this.選択肢１DataGridViewTextBoxColumn.Name = "選択肢１DataGridViewTextBoxColumn";
+            this.選択肢１DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // 選択肢２DataGridViewTextBoxColumn
             // 
@@ -103,6 +109,7 @@
             this.選択肢２DataGridViewTextBoxColumn.HeaderText = "選択肢２";
             this.選択肢２DataGridViewTextBoxColumn.MinimumWidth = 6;
             this.選択肢２DataGridViewTextBoxColumn.Name = "選択肢２DataGridViewTextBoxColumn";
+            this.選択肢２DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // 選択肢３DataGridViewTextBoxColumn
             // 
@@ -110,6 +117,7 @@
             this.選択肢３DataGridViewTextBoxColumn.HeaderText = "選択肢３";
             this.選択肢３DataGridViewTextBoxColumn.MinimumWidth = 6;
             this.選択肢３DataGridViewTextBoxColumn.Name = "選択肢３DataGridViewTextBoxColumn";
+            this.選択肢３DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // 選択肢４DataGridViewTextBoxColumn
             // 
@@ -117,6 +125,7 @@
             this.選択肢４DataGridViewTextBoxColumn.HeaderText = "選択肢４";
             this.選択肢４DataGridViewTextBoxColumn.MinimumWidth = 6;
             this.選択肢４DataGridViewTextBoxColumn.Name = "選択肢４DataGridViewTextBoxColumn";
+            this.選択肢４DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // 回答番号DataGridViewTextBoxColumn
             // 
@@ -124,16 +133,22 @@
             this.回答番号DataGridViewTextBoxColumn.HeaderText = "回答番号";
             this.回答番号DataGridViewTextBoxColumn.MinimumWidth = 6;
             this.回答番号DataGridViewTextBoxColumn.Name = "回答番号DataGridViewTextBoxColumn";
+            this.回答番号DataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // quizDataTableBindingSource
+            // quizDataTableBindingSource1
             // 
-            this.quizDataTableBindingSource.DataMember = "quizDataTable";
-            this.quizDataTableBindingSource.DataSource = this.quizDataSet;
+            this.quizDataTableBindingSource1.DataMember = "quizDataTable";
+            this.quizDataTableBindingSource1.DataSource = this.quizDataSet;
             // 
             // quizDataSet
             // 
             this.quizDataSet.DataSetName = "QuizDataSet";
             this.quizDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // quizDataTableBindingSource
+            // 
+            this.quizDataTableBindingSource.DataMember = "quizDataTable";
+            this.quizDataTableBindingSource.DataSource = this.quizDataSet;
             // 
             // questionTextBox
             // 
@@ -197,6 +212,7 @@
             this.ansRadioButton1.TabIndex = 9;
             this.ansRadioButton1.TabStop = true;
             this.ansRadioButton1.UseVisualStyleBackColor = true;
+            this.ansRadioButton1.CheckedChanged += new System.EventHandler(this.ansRadioButton1Clicked);
             // 
             // ansRadioButton2
             // 
@@ -207,6 +223,7 @@
             this.ansRadioButton2.TabIndex = 10;
             this.ansRadioButton2.TabStop = true;
             this.ansRadioButton2.UseVisualStyleBackColor = true;
+            this.ansRadioButton2.CheckedChanged += new System.EventHandler(this.ansRadioButton2Clicked);
             // 
             // ansRadioButton3
             // 
@@ -217,6 +234,7 @@
             this.ansRadioButton3.TabIndex = 11;
             this.ansRadioButton3.TabStop = true;
             this.ansRadioButton3.UseVisualStyleBackColor = true;
+            this.ansRadioButton3.CheckedChanged += new System.EventHandler(this.ansRadioButton3Clicked);
             // 
             // ansRadioButton4
             // 
@@ -227,6 +245,7 @@
             this.ansRadioButton4.TabIndex = 12;
             this.ansRadioButton4.TabStop = true;
             this.ansRadioButton4.UseVisualStyleBackColor = true;
+            this.ansRadioButton4.CheckedChanged += new System.EventHandler(this.ansRadioButton4Clicked);
             // 
             // label3
             // 
@@ -284,11 +303,6 @@
             this.removeButton.UseVisualStyleBackColor = true;
             this.removeButton.Click += new System.EventHandler(this.RemoveButtonClicked);
             // 
-            // quizDataTableBindingSource1
-            // 
-            this.quizDataTableBindingSource1.DataMember = "quizDataTable";
-            this.quizDataTableBindingSource1.DataSource = this.quizDataSet;
-            // 
             // QuizListManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -315,9 +329,9 @@
             this.Name = "QuizListManager";
             this.Text = "QuizListManager";
             ((System.ComponentModel.ISupportInitialize)(this.quizDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quizDataTableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quizDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quizDataTableBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quizDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quizDataTableBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

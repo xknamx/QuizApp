@@ -9,19 +9,13 @@ namespace QuizApp
 {
     public partial class QuizListManager : Form
     {
-        string selected = "";
 
         public QuizListManager()
         {
             InitializeComponent();
             RoadDate();
             //実行時にデータの読み込みを行う
-            selectedAnsView();
-
         }
-
-
-
 
         public void AddButtonClicked(object sender, EventArgs e)
         {
@@ -34,87 +28,24 @@ namespace QuizApp
                 this.ans2TextBox.Text,
                 this.ans3TextBox.Text,
                 this.ans4TextBox.Text,
-                SelectedAns().ToString());
-
-
-
+                (SelectedAns() + 1).ToString());
+                ClearRadioButton();
+                SaveDate();
             }
             catch (System.FormatException)
             {
                 MessageBox.Show("入力に誤りがあります");
             }
-            SaveDate();
-
         }
-
-        public void selectedAnsView()
-        {
-            if (ansRadioButton1.Checked)
-            {
-                ansRadioButton1.Text = "回答";
-                ansRadioButton2.Text = "";
-                ansRadioButton3.Text = "";
-                ansRadioButton4.Text = "";
-            }
-
-            if (ansRadioButton2.Checked)
-            {
-                ansRadioButton1.Text = "";
-                ansRadioButton2.Text = "回答";
-                ansRadioButton3.Text = "";
-                ansRadioButton4.Text = "";
-            }
-
-            if (ansRadioButton3.Checked)
-            {
-                ansRadioButton1.Text = "";
-                ansRadioButton2.Text = "";
-                ansRadioButton3.Text = "回答";
-                ansRadioButton4.Text = "";
-            }
-
-            if (ansRadioButton4.Checked)
-            {
-                ansRadioButton1.Text = "";
-                ansRadioButton2.Text = "";
-                ansRadioButton3.Text = "";
-                ansRadioButton4.Text = "回答";
-            }
-            else
-            {
-                ansRadioButton1.Text = "";
-                ansRadioButton2.Text = "";
-                ansRadioButton3.Text = "";
-                ansRadioButton4.Text = "";
-            }
-        }
+        
         //選択されたラジオボタンを回答として保存する
         public int SelectedAns()
         {
-            if (ansRadioButton1.Checked)
-            {
-                return 0;
-            }
-
-            if (ansRadioButton2.Checked)
-            {
-                return 1;
-            }
-
-            if (ansRadioButton3.Checked)
-            {
-                return 2;
-            }
-
-            if (ansRadioButton4.Checked)
-            {
-                return 3;
-            }
-
-            else
-            {
-                return -1;
-            }
+            if (ansRadioButton1.Checked)return 0;
+            if (ansRadioButton2.Checked)return 1;
+            if (ansRadioButton3.Checked)return 2;
+            if (ansRadioButton4.Checked)return 3;
+            else{return -1;}
         }
 
         private void RemoveButtonClicked(object sender, EventArgs e)
@@ -137,20 +68,13 @@ namespace QuizApp
                     row["選択肢３"].ToString(),
                     row["選択肢４"].ToString()
                 };
+                questions.Add(new Question(row["問題文"].ToString(), list, int.Parse(row["回答番号"].ToString())));
 
-
-                questions.Add(new Question
-                {
-                    Text = row["問題文"].ToString(),
-                    Options = list,
-                    CorrectOption = (int)row["回答番号"]
-                });
             }
             var json = JsonConvert.SerializeObject(questions, Newtonsoft.Json.Formatting.Indented);
 
             //JSON文字列（json変数の値）をファイルに書き込む
             File.WriteAllText(@"..\..\クイズデータ.json", json);
-
         }
 
         //JSONファイルからデータを読み込んでDatesetに収納するメソッド
@@ -177,8 +101,6 @@ namespace QuizApp
                         question.Text,
                         option1,option2,option3,option4,
                         question.CorrectOption.ToString());
-                    
-
                 }
             }
         }
@@ -196,16 +118,48 @@ namespace QuizApp
                 this.ans3TextBox.Text = currentRow.Cells["選択肢３DataGridViewTextBoxColumn"].Value.ToString();
                 this.ans4TextBox.Text = currentRow.Cells["選択肢４DataGridViewTextBoxColumn"].Value.ToString();
 
-                if(int.Parse(currentRow.Cells["回答番号DataGridViewTextBoxColumn"].Value.ToString())==1)
-                {
-                    this.ansRadioButton1.Checked = true;
-                    ansRadioButton1.Text = "回答";
-                    ansRadioButton2.Text = "";
-                    ansRadioButton3.Text = "";
-                    ansRadioButton4.Text = "";
-                }
             }
         }
+
+
+        //選択されたラジオボタンの横に回答と表示する
+        private void ansRadioButton1Clicked(object sender, EventArgs e)
+        {
+            ansRadioButton1.Text = "回答";
+            ansRadioButton2.Text = "";
+            ansRadioButton3.Text = "";
+            ansRadioButton4.Text = "";
+        }
+        private void ansRadioButton2Clicked(object sender, EventArgs e)
+        {
+            ansRadioButton1.Text = "";
+            ansRadioButton2.Text = "回答";
+            ansRadioButton3.Text = "";
+            ansRadioButton4.Text = "";
+        }
+         private void ansRadioButton3Clicked(object sender, EventArgs e)
+        {
+            ansRadioButton1.Text = "";
+            ansRadioButton2.Text = "";
+            ansRadioButton3.Text = "回答";
+            ansRadioButton4.Text = "";
+        }
+         private void ansRadioButton4Clicked(object sender, EventArgs e)
+        {
+            ansRadioButton1.Text = "";
+            ansRadioButton2.Text = "";
+            ansRadioButton3.Text = "";
+            ansRadioButton4.Text = "回答";
+        }
+
+        private void ClearRadioButton()
+        {
+            ansRadioButton1.Text = "";
+            ansRadioButton2.Text = "";
+            ansRadioButton3.Text = "";
+            ansRadioButton4.Text = "";
+        }
+
     }
 
 }
