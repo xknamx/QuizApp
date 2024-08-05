@@ -30,6 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             this.quizDataGrid = new System.Windows.Forms.DataGridView();
+            this.問題文DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.選択肢１DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.選択肢２DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.選択肢３DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.選択肢４DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.回答番号DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quizDataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.quizDataSet = new QuizApp.QuizDataSet();
             this.questionTextBox = new System.Windows.Forms.TextBox();
             this.ans1TextBox = new System.Windows.Forms.TextBox();
             this.ans3TextBox = new System.Windows.Forms.TextBox();
@@ -47,17 +55,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();
             this.removeButton = new System.Windows.Forms.Button();
-            this.問題文DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.選択肢１DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.選択肢２DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.選択肢３DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.選択肢４DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.回答番号DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quizDataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.quizDataSet = new QuizApp.QuizDataSet();
+            this.quizDataTableBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.quizDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quizDataTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quizDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quizDataTableBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // quizDataGrid
@@ -73,14 +75,65 @@
             this.選択肢３DataGridViewTextBoxColumn,
             this.選択肢４DataGridViewTextBoxColumn,
             this.回答番号DataGridViewTextBoxColumn});
-            this.quizDataGrid.DataSource = this.quizDataTableBindingSource;
+            this.quizDataGrid.DataSource = this.quizDataTableBindingSource1;
             this.quizDataGrid.Location = new System.Drawing.Point(12, 30);
             this.quizDataGrid.Name = "quizDataGrid";
             this.quizDataGrid.RowHeadersWidth = 51;
             this.quizDataGrid.RowTemplate.Height = 24;
             this.quizDataGrid.Size = new System.Drawing.Size(801, 150);
             this.quizDataGrid.TabIndex = 0;
-            this.quizDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // 問題文DataGridViewTextBoxColumn
+            // 
+            this.問題文DataGridViewTextBoxColumn.DataPropertyName = "問題文";
+            this.問題文DataGridViewTextBoxColumn.HeaderText = "問題文";
+            this.問題文DataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.問題文DataGridViewTextBoxColumn.Name = "問題文DataGridViewTextBoxColumn";
+            // 
+            // 選択肢１DataGridViewTextBoxColumn
+            // 
+            this.選択肢１DataGridViewTextBoxColumn.DataPropertyName = "選択肢１";
+            this.選択肢１DataGridViewTextBoxColumn.HeaderText = "選択肢１";
+            this.選択肢１DataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.選択肢１DataGridViewTextBoxColumn.Name = "選択肢１DataGridViewTextBoxColumn";
+            // 
+            // 選択肢２DataGridViewTextBoxColumn
+            // 
+            this.選択肢２DataGridViewTextBoxColumn.DataPropertyName = "選択肢２";
+            this.選択肢２DataGridViewTextBoxColumn.HeaderText = "選択肢２";
+            this.選択肢２DataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.選択肢２DataGridViewTextBoxColumn.Name = "選択肢２DataGridViewTextBoxColumn";
+            // 
+            // 選択肢３DataGridViewTextBoxColumn
+            // 
+            this.選択肢３DataGridViewTextBoxColumn.DataPropertyName = "選択肢３";
+            this.選択肢３DataGridViewTextBoxColumn.HeaderText = "選択肢３";
+            this.選択肢３DataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.選択肢３DataGridViewTextBoxColumn.Name = "選択肢３DataGridViewTextBoxColumn";
+            // 
+            // 選択肢４DataGridViewTextBoxColumn
+            // 
+            this.選択肢４DataGridViewTextBoxColumn.DataPropertyName = "選択肢４";
+            this.選択肢４DataGridViewTextBoxColumn.HeaderText = "選択肢４";
+            this.選択肢４DataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.選択肢４DataGridViewTextBoxColumn.Name = "選択肢４DataGridViewTextBoxColumn";
+            // 
+            // 回答番号DataGridViewTextBoxColumn
+            // 
+            this.回答番号DataGridViewTextBoxColumn.DataPropertyName = "回答番号";
+            this.回答番号DataGridViewTextBoxColumn.HeaderText = "回答番号";
+            this.回答番号DataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.回答番号DataGridViewTextBoxColumn.Name = "回答番号DataGridViewTextBoxColumn";
+            // 
+            // quizDataTableBindingSource
+            // 
+            this.quizDataTableBindingSource.DataMember = "quizDataTable";
+            this.quizDataTableBindingSource.DataSource = this.quizDataSet;
+            // 
+            // quizDataSet
+            // 
+            this.quizDataSet.DataSetName = "QuizDataSet";
+            this.quizDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // questionTextBox
             // 
@@ -219,7 +272,7 @@
             this.addButton.TabIndex = 17;
             this.addButton.Text = "追加";
             this.addButton.UseVisualStyleBackColor = true;
-            //this.addButton.Click += new System.EventHandler(this.addButtonClicked);
+            this.addButton.Click += new System.EventHandler(this.AddButtonClicked);
             // 
             // removeButton
             // 
@@ -231,57 +284,10 @@
             this.removeButton.UseVisualStyleBackColor = true;
             this.removeButton.Click += new System.EventHandler(this.RemoveButtonClicked);
             // 
-            // 問題文DataGridViewTextBoxColumn
+            // quizDataTableBindingSource1
             // 
-            this.問題文DataGridViewTextBoxColumn.DataPropertyName = "問題文";
-            this.問題文DataGridViewTextBoxColumn.HeaderText = "問題文";
-            this.問題文DataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.問題文DataGridViewTextBoxColumn.Name = "問題文DataGridViewTextBoxColumn";
-            // 
-            // 選択肢１DataGridViewTextBoxColumn
-            // 
-            this.選択肢１DataGridViewTextBoxColumn.DataPropertyName = "選択肢１";
-            this.選択肢１DataGridViewTextBoxColumn.HeaderText = "選択肢１";
-            this.選択肢１DataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.選択肢１DataGridViewTextBoxColumn.Name = "選択肢１DataGridViewTextBoxColumn";
-            // 
-            // 選択肢２DataGridViewTextBoxColumn
-            // 
-            this.選択肢２DataGridViewTextBoxColumn.DataPropertyName = "選択肢２";
-            this.選択肢２DataGridViewTextBoxColumn.HeaderText = "選択肢２";
-            this.選択肢２DataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.選択肢２DataGridViewTextBoxColumn.Name = "選択肢２DataGridViewTextBoxColumn";
-            // 
-            // 選択肢３DataGridViewTextBoxColumn
-            // 
-            this.選択肢３DataGridViewTextBoxColumn.DataPropertyName = "選択肢３";
-            this.選択肢３DataGridViewTextBoxColumn.HeaderText = "選択肢３";
-            this.選択肢３DataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.選択肢３DataGridViewTextBoxColumn.Name = "選択肢３DataGridViewTextBoxColumn";
-            // 
-            // 選択肢４DataGridViewTextBoxColumn
-            // 
-            this.選択肢４DataGridViewTextBoxColumn.DataPropertyName = "選択肢４";
-            this.選択肢４DataGridViewTextBoxColumn.HeaderText = "選択肢４";
-            this.選択肢４DataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.選択肢４DataGridViewTextBoxColumn.Name = "選択肢４DataGridViewTextBoxColumn";
-            // 
-            // 回答番号DataGridViewTextBoxColumn
-            // 
-            this.回答番号DataGridViewTextBoxColumn.DataPropertyName = "回答番号";
-            this.回答番号DataGridViewTextBoxColumn.HeaderText = "回答番号";
-            this.回答番号DataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.回答番号DataGridViewTextBoxColumn.Name = "回答番号DataGridViewTextBoxColumn";
-            // 
-            // quizDataTableBindingSource
-            // 
-            this.quizDataTableBindingSource.DataMember = "quizDataTable";
-            this.quizDataTableBindingSource.DataSource = this.quizDataSet;
-            // 
-            // quizDataSet
-            // 
-            this.quizDataSet.DataSetName = "QuizDataSet";
-            this.quizDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.quizDataTableBindingSource1.DataMember = "quizDataTable";
+            this.quizDataTableBindingSource1.DataSource = this.quizDataSet;
             // 
             // QuizListManager
             // 
@@ -311,6 +317,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.quizDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quizDataTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quizDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quizDataTableBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -344,5 +351,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button removeButton;
+        private System.Windows.Forms.BindingSource quizDataTableBindingSource1;
     }
 }

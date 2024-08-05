@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
+
 
 namespace QuizApp
 {
@@ -17,12 +19,18 @@ namespace QuizApp
         private int currentQuestionIndex;
         //現在のクイズ番号示す値
         QuizListManager quizListManager;
+        private MediaPlayer mediaPlayerT;
+        private MediaPlayer mediaPlayerF;
+
 
         public Form1()
         {
             InitializeComponent();
             LoadQuestion();
             DisplayQuestion();
+            this.quizListManager = new QuizListManager();
+            InitializeMediaPlayer();
+
         }
 
         private void LoadQuestion()
@@ -61,6 +69,19 @@ namespace QuizApp
             }
         }
 
+        private void InitializeMediaPlayer()
+        {
+            //正解音
+            mediaPlayerT = new MediaPlayer();
+            Uri soundUriT = new Uri("TrueAnswer.mp3", UriKind.Relative);
+            mediaPlayerT.Open(soundUriT);
+            
+            //不正解音
+            mediaPlayerF = new MediaPlayer();
+            Uri soundUriF = new Uri("FalseAnswer.mp3", UriKind.Relative);
+            mediaPlayerF.Open(soundUriF);
+        }
+
         private void DisplayOptions(string[] options)
         {
             option1RadioButton.Text = options[0];
@@ -91,11 +112,17 @@ namespace QuizApp
             //選択中の回答の値が設定した回答の値と同じなら
             {
                 resultLabel.Text = "正解！";
+                // 再生前にメディアプレイヤーの位置をリセットする
+                mediaPlayerT.Position = TimeSpan.Zero;
+                mediaPlayerT.Play();
+
             }
             else
             {
                 resultLabel.Text = "不正解。正しい答えは：" + question.Options[question.CorrectOption];
                 //間違っていれば四択配列から回答番目の要素を取り出して表示する
+                mediaPlayerF.Position = TimeSpan.Zero;
+                mediaPlayerF.Play();
             }
 
             currentQuestionIndex++;
@@ -136,7 +163,7 @@ namespace QuizApp
             }
             else
             {
-                //そうでなければ開いているpalletウィンドウにフォーカスをあてる
+                //そうでなければ開いているQuizManagerウィンドウにフォーカスをあてる
                 quizListManager.Activate();
             }
 
