@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Media;
+using System.Media;
 
 
 namespace QuizApp
@@ -29,7 +30,6 @@ namespace QuizApp
             LoadQuestion();
             DisplayQuestion();
             this.quizListManager = new QuizListManager();
-            InitializeMediaPlayer();
 
         }
 
@@ -69,18 +69,7 @@ namespace QuizApp
             }
         }
 
-        private void InitializeMediaPlayer()
-        {
-            //正解音
-            mediaPlayerT = new MediaPlayer();
-            Uri soundUriT = new Uri("TrueAnswer.mp3", UriKind.Relative);
-            mediaPlayerT.Open(soundUriT);
-            
-            //不正解音
-            mediaPlayerF = new MediaPlayer();
-            Uri soundUriF = new Uri("FalseAnswer.mp3", UriKind.Relative);
-            mediaPlayerF.Open(soundUriF);
-        }
+       
 
         private void DisplayOptions(string[] options)
         {
@@ -112,17 +101,16 @@ namespace QuizApp
             //選択中の回答の値が設定した回答の値と同じなら
             {
                 resultLabel.Text = "正解！";
-                // 再生前にメディアプレイヤーの位置をリセットする
-                mediaPlayerT.Position = TimeSpan.Zero;
-                mediaPlayerT.Play();
-
+                //正解音を流す
+                SoundPlayer player = new SoundPlayer("TrueAnswer.wav");
+                player.Play();
             }
             else
             {
                 resultLabel.Text = "不正解。正しい答えは：" + question.Options[question.CorrectOption];
                 //間違っていれば四択配列から回答番目の要素を取り出して表示する
-                mediaPlayerF.Position = TimeSpan.Zero;
-                mediaPlayerF.Play();
+                SoundPlayer player = new SoundPlayer("FalseAnswer.wav");
+                player.Play();
             }
 
             currentQuestionIndex++;

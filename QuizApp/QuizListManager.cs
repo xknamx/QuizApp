@@ -24,8 +24,8 @@ namespace QuizApp
                 MessageBox.Show("問題が入力されていません");
             }
             else if (
-                this.ans1TextBox.Text == "" | this.ans2TextBox.Text == "" ||
-                this.ans3TextBox.Text == "" || this.ans4TextBox.Text == "")
+                this.ans1TextBox.Text == "" | this.ans3TextBox.Text == "" ||
+                this.ans2TextBox.Text == "" || this.ans4TextBox.Text == "")
             {
                 MessageBox.Show("回答が正しく入力されていません");
             }

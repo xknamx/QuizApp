@@ -41,8 +41,8 @@
             this.quizDataTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.questionTextBox = new System.Windows.Forms.TextBox();
             this.ans1TextBox = new System.Windows.Forms.TextBox();
-            this.ans3TextBox = new System.Windows.Forms.TextBox();
             this.ans2TextBox = new System.Windows.Forms.TextBox();
+            this.ans3TextBox = new System.Windows.Forms.TextBox();
             this.ans4TextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -87,6 +87,7 @@
             this.quizDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.quizDataGrid.Size = new System.Drawing.Size(801, 150);
             this.quizDataGrid.TabIndex = 0;
+            this.quizDataGrid.CurrentCellChanged += new System.EventHandler(this.QuizDataGrid_SelectionChanged);
             // 
             // 問題文DataGridViewTextBoxColumn
             // 
@@ -160,28 +161,28 @@
             // 
             // ans1TextBox
             // 
-            this.ans1TextBox.Location = new System.Drawing.Point(127, 283);
+            this.ans1TextBox.Location = new System.Drawing.Point(127, 289);
             this.ans1TextBox.Name = "ans1TextBox";
             this.ans1TextBox.Size = new System.Drawing.Size(387, 22);
             this.ans1TextBox.TabIndex = 2;
             // 
-            // ans3TextBox
-            // 
-            this.ans3TextBox.Location = new System.Drawing.Point(127, 339);
-            this.ans3TextBox.Name = "ans3TextBox";
-            this.ans3TextBox.Size = new System.Drawing.Size(387, 22);
-            this.ans3TextBox.TabIndex = 3;
-            // 
             // ans2TextBox
             // 
-            this.ans2TextBox.Location = new System.Drawing.Point(127, 311);
+            this.ans2TextBox.Location = new System.Drawing.Point(127, 327);
             this.ans2TextBox.Name = "ans2TextBox";
             this.ans2TextBox.Size = new System.Drawing.Size(387, 22);
-            this.ans2TextBox.TabIndex = 4;
+            this.ans2TextBox.TabIndex = 3;
+            // 
+            // ans3TextBox
+            // 
+            this.ans3TextBox.Location = new System.Drawing.Point(127, 365);
+            this.ans3TextBox.Name = "ans3TextBox";
+            this.ans3TextBox.Size = new System.Drawing.Size(387, 22);
+            this.ans3TextBox.TabIndex = 4;
             // 
             // ans4TextBox
             // 
-            this.ans4TextBox.Location = new System.Drawing.Point(127, 367);
+            this.ans4TextBox.Location = new System.Drawing.Point(127, 402);
             this.ans4TextBox.Name = "ans4TextBox";
             this.ans4TextBox.Size = new System.Drawing.Size(387, 22);
             this.ans4TextBox.TabIndex = 5;
@@ -207,7 +208,7 @@
             // ansRadioButton1
             // 
             this.ansRadioButton1.AutoSize = true;
-            this.ansRadioButton1.Location = new System.Drawing.Point(533, 289);
+            this.ansRadioButton1.Location = new System.Drawing.Point(560, 295);
             this.ansRadioButton1.Name = "ansRadioButton1";
             this.ansRadioButton1.Size = new System.Drawing.Size(17, 16);
             this.ansRadioButton1.TabIndex = 9;
@@ -218,7 +219,7 @@
             // ansRadioButton2
             // 
             this.ansRadioButton2.AutoSize = true;
-            this.ansRadioButton2.Location = new System.Drawing.Point(533, 317);
+            this.ansRadioButton2.Location = new System.Drawing.Point(560, 333);
             this.ansRadioButton2.Name = "ansRadioButton2";
             this.ansRadioButton2.Size = new System.Drawing.Size(17, 16);
             this.ansRadioButton2.TabIndex = 10;
@@ -229,7 +230,7 @@
             // ansRadioButton3
             // 
             this.ansRadioButton3.AutoSize = true;
-            this.ansRadioButton3.Location = new System.Drawing.Point(533, 345);
+            this.ansRadioButton3.Location = new System.Drawing.Point(560, 371);
             this.ansRadioButton3.Name = "ansRadioButton3";
             this.ansRadioButton3.Size = new System.Drawing.Size(17, 16);
             this.ansRadioButton3.TabIndex = 11;
@@ -240,7 +241,7 @@
             // ansRadioButton4
             // 
             this.ansRadioButton4.AutoSize = true;
-            this.ansRadioButton4.Location = new System.Drawing.Point(533, 370);
+            this.ansRadioButton4.Location = new System.Drawing.Point(560, 408);
             this.ansRadioButton4.Name = "ansRadioButton4";
             this.ansRadioButton4.Size = new System.Drawing.Size(17, 16);
             this.ansRadioButton4.TabIndex = 12;
@@ -251,7 +252,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(104, 286);
+            this.label3.Location = new System.Drawing.Point(104, 289);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(17, 15);
             this.label3.TabIndex = 13;
@@ -260,7 +261,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(104, 318);
+            this.label4.Location = new System.Drawing.Point(104, 327);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(17, 15);
             this.label4.TabIndex = 14;
@@ -269,7 +270,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(104, 349);
+            this.label5.Location = new System.Drawing.Point(104, 365);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(17, 15);
             this.label5.TabIndex = 15;
@@ -278,7 +279,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(104, 374);
+            this.label6.Location = new System.Drawing.Point(104, 402);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(17, 15);
             this.label6.TabIndex = 16;
@@ -286,9 +287,9 @@
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(641, 283);
+            this.addButton.Location = new System.Drawing.Point(665, 318);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(172, 50);
+            this.addButton.Size = new System.Drawing.Size(148, 50);
             this.addButton.TabIndex = 17;
             this.addButton.Text = "追加";
             this.addButton.UseVisualStyleBackColor = true;
@@ -296,9 +297,9 @@
             // 
             // removeButton
             // 
-            this.removeButton.Location = new System.Drawing.Point(641, 340);
+            this.removeButton.Location = new System.Drawing.Point(665, 374);
             this.removeButton.Name = "removeButton";
-            this.removeButton.Size = new System.Drawing.Size(172, 50);
+            this.removeButton.Size = new System.Drawing.Size(148, 50);
             this.removeButton.TabIndex = 18;
             this.removeButton.Text = "削除";
             this.removeButton.UseVisualStyleBackColor = true;
@@ -307,11 +308,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(533, 268);
+            this.label7.Location = new System.Drawing.Point(524, 267);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(78, 15);
+            this.label7.Size = new System.Drawing.Size(89, 15);
             this.label7.TabIndex = 19;
-            this.label7.Text = "正解を選択";
+            this.label7.Text = "正解にチェック";
             // 
             // QuizListManager
             // 
@@ -332,13 +333,14 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ans4TextBox);
-            this.Controls.Add(this.ans2TextBox);
             this.Controls.Add(this.ans3TextBox);
+            this.Controls.Add(this.ans2TextBox);
             this.Controls.Add(this.ans1TextBox);
             this.Controls.Add(this.questionTextBox);
             this.Controls.Add(this.quizDataGrid);
             this.Name = "QuizListManager";
             this.Text = "QuizListManager";
+            this.CursorChanged += new System.EventHandler(this.QuizDataGrid_SelectionChanged);
             ((System.ComponentModel.ISupportInitialize)(this.quizDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quizDataTableBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quizDataSet)).EndInit();
@@ -361,8 +363,8 @@
         private QuizDataSet quizDataSet;
         private System.Windows.Forms.TextBox questionTextBox;
         private System.Windows.Forms.TextBox ans1TextBox;
-        private System.Windows.Forms.TextBox ans3TextBox;
         private System.Windows.Forms.TextBox ans2TextBox;
+        private System.Windows.Forms.TextBox ans3TextBox;
         private System.Windows.Forms.TextBox ans4TextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
