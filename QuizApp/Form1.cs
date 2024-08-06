@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Media;
 using System.Media;
@@ -24,7 +18,7 @@ namespace QuizApp
         QuizListManager quizListManager;
         private MediaPlayer mediaPlayerT;
         private MediaPlayer mediaPlayerF;
-
+        int correctCount;       //正答数のカウント
 
         public Form1()
         {
@@ -32,6 +26,7 @@ namespace QuizApp
             RoadQuestion();
             DisplayQuestion();
             this.quizListManager = new QuizListManager();
+            correctCount = 0;
 
         }
 
@@ -85,12 +80,13 @@ namespace QuizApp
 
         private void showEndOfQuiz()
         {
-            questionLabel.Text = "これ以上の質問はありません";
+            questionLabel.Text = $"{questions.Count}問中{correctCount}問正解！\n問題は以上です";
             option1RadioButton.Visible = false;
             option2RadioButton.Visible = false;
             option3RadioButton.Visible = false;
             option4RadioButton.Visible = false;
             submitButton.Visible = false;
+            resultLabel.Visible = false;
         }
 
         private void SubmitButton_Click(object sender, EventArgs e)
@@ -108,6 +104,7 @@ namespace QuizApp
                 //正解音を流す
                 SoundPlayer player = new SoundPlayer("TrueAnswer.wav");
                 player.Play();
+                correctCount++;
             }
             else
             {
