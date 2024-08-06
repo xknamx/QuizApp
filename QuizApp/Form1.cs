@@ -183,8 +183,7 @@ namespace QuizApp
             Options = options;
             CorrectOption = correctOption;
         }
-        public Question()
-        { }
+        
 
     }
 
