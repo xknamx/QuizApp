@@ -19,6 +19,7 @@ namespace QuizApp
 
         public void AddButtonClicked(object sender, EventArgs e)
         {
+
             if (this.questionTextBox.Text == "")
             {
                 MessageBox.Show("問題が入力されていません");
@@ -39,6 +40,16 @@ namespace QuizApp
 
             else
             {
+                foreach (DataRow row in quizDataSet.quizDataTable.Rows)
+                {
+                    if (row["問題"].ToString() == this.questionTextBox.Text)
+                    {
+                        MessageBox.Show("同じ問題すでに存在します", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+
+                    }
+                }
+
                 try
                 {
                     //DateTableにデータを追加する (追加した列の数と対応した引数で指定する)
@@ -161,6 +172,7 @@ namespace QuizApp
             }
         }
 
+     
 
         //選択されたラジオボタンの横に回答と表示する
         private void ansRadioButton1Clicked(object sender, EventArgs e)
