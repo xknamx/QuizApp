@@ -20,11 +20,14 @@ namespace QuizApp
         private MediaPlayer mediaPlayerF;
         int correctCount;       //正答数のカウント
 
+
         public Form1()
         {
             InitializeComponent();
             RoadQuestion();
             DisplayQuestion();
+            quizCounter.Text = $"1/{questions.Count}";
+
             this.quizListManager = new QuizListManager();
             correctCount = 0;
 
@@ -43,6 +46,7 @@ namespace QuizApp
             }
             currentQuestionIndex = 0;
             //現在の問題番号の初期値に0を代入
+
         }
 
 
@@ -87,6 +91,7 @@ namespace QuizApp
             option4RadioButton.Visible = false;
             submitButton.Visible = false;
             resultLabel.Visible = false;
+            quizCounter.Visible = false;
         }
 
         private void SubmitButton_Click(object sender, EventArgs e)
@@ -97,7 +102,7 @@ namespace QuizApp
             int selectOption = GetSelectedOption();
             //選択中のラジオボタンに応じて選択中の回答の値を代入するメソッドの戻り値を代入
 
-            if (selectOption == (question.CorrectOption)-1)
+            if (selectOption == question.CorrectOption-1)
             //選択中の回答の値が設定した回答の値と同じなら
             {
                 resultLabel.Text = "正解！";
@@ -108,7 +113,7 @@ namespace QuizApp
             }
             else
             {
-                resultLabel.Text = "不正解。正しい答えは：" + question.Options[question.CorrectOption];
+                resultLabel.Text = "不正解。正しい答えは：" + question.Options[question.CorrectOption-1];
                 //間違っていれば四択配列から回答番目の要素を取り出して表示する
                 SoundPlayer player = new SoundPlayer("FalseAnswer.wav");
                 player.Play();
@@ -116,6 +121,8 @@ namespace QuizApp
 
             currentQuestionIndex++;
             //問題番号の値を１増やす
+            quizCounter.Text = $"{currentQuestionIndex + 1}/{questions.Count}";
+
             DisplayQuestion();
             //DisplayQuestionメソッドを呼び出して次の問題を表示させる
 

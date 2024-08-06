@@ -42,9 +42,9 @@ namespace QuizApp
             {
                 foreach (DataRow row in quizDataSet.quizDataTable.Rows)
                 {
-                    if (row["問題"].ToString() == this.questionTextBox.Text)
+                    if (row["問題文"].ToString() == this.questionTextBox.Text)
                     {
-                        MessageBox.Show("同じ問題すでに存在します", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("同じ問題がすでに存在します", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
 
                     }

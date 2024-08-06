@@ -39,6 +39,7 @@
             this.quizManagerViewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.quizCounter = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -149,11 +150,23 @@
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // quizCounter
+            // 
+            this.quizCounter.AutoSize = true;
+            this.quizCounter.Enabled = false;
+            this.quizCounter.Location = new System.Drawing.Point(286, 30);
+            this.quizCounter.Name = "quizCounter";
+            this.quizCounter.Size = new System.Drawing.Size(32, 15);
+            this.quizCounter.TabIndex = 8;
+            this.quizCounter.Text = "     ";
+            this.quizCounter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(330, 340);
+            this.Controls.Add(this.quizCounter);
             this.Controls.Add(this.resultLabel);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.option4RadioButton);
@@ -185,6 +198,7 @@
         private System.Windows.Forms.ToolStripMenuItem quizManagerViewMenu;
         private System.Windows.Forms.ToolStripMenuItem exitMenu;
         private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.Label quizCounter;
     }
 }
 
