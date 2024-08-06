@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.questionLabel = new System.Windows.Forms.Label();
             this.option1RadioButton = new System.Windows.Forms.RadioButton();
             this.option2RadioButton = new System.Windows.Forms.RadioButton();
@@ -40,7 +41,9 @@
             this.exitMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.quizCounter = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // questionLabel
@@ -147,7 +150,7 @@
             this.メニューToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(330, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(335, 30);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -162,12 +165,25 @@
             this.quizCounter.Text = "     ";
             this.quizCounter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.ErrorImage")));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 300);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(60, 71);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(330, 340);
+            this.BackColor = System.Drawing.Color.Azure;
+            this.ClientSize = new System.Drawing.Size(335, 371);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.quizCounter);
             this.Controls.Add(this.resultLabel);
             this.Controls.Add(this.submitButton);
@@ -182,6 +198,7 @@
             this.Text = "クイズアプリ";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,6 +218,7 @@
         private System.Windows.Forms.ToolStripMenuItem exitMenu;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label quizCounter;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
