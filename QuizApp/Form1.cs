@@ -164,6 +164,8 @@ namespace QuizApp
             }
 
         }
+
+        
     }
 
     //クイズ文、選択支リスト、回答番号の設定を保持するQuestionクラス

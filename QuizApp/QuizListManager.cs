@@ -46,7 +46,6 @@ namespace QuizApp
                     {
                         MessageBox.Show("同じ問題がすでに存在します", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
-
                     }
                 }
 
