@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Media;
 using System.Media;
+using Newtonsoft.Json;
+using System.IO;
 
 
 namespace QuizApp
@@ -27,25 +29,27 @@ namespace QuizApp
         public Form1()
         {
             InitializeComponent();
-            LoadQuestion();
+            RoadQuestion();
             DisplayQuestion();
             this.quizListManager = new QuizListManager();
 
         }
 
-        private void LoadQuestion()
-        //クイズの内容を読み込むメソッド
+        private void RoadQuestion()
         {
-            questions = new List<Question>
+            //JSONファイルが存在する場合、読み込み処理を行う
+            if (File.Exists(@"..\..\クイズデータ.json"))
             {
-                new Question("日本の首都はどこですか？",new string[] { "大阪", "東京", "京都", "福岡" }, 1),
-                new Question("次のうち、２＋２の答えはどれですか？",new string[] {"3","4","5","6" }, 1)
-                
-                //ここに質問を追加
-            };
+                //jsonファイル内のデータを読み込んで文字列型としてjson変数に代入
+                var json = File.ReadAllText(@"..\..\クイズデータ.json");
+
+                //読み取ったJSON文字列をBook型のリストbooksにデシリアライズ
+                questions = JsonConvert.DeserializeObject<List<Question>>(json);
+            }
             currentQuestionIndex = 0;
             //現在の問題番号の初期値に0を代入
         }
+
 
         private void DisplayQuestion()
         //クイズをフォームに表示するメソッド
@@ -97,7 +101,7 @@ namespace QuizApp
             int selectOption = GetSelectedOption();
             //選択中のラジオボタンに応じて選択中の回答の値を代入するメソッドの戻り値を代入
 
-            if (selectOption == question.CorrectOption)
+            if (selectOption == (question.CorrectOption)-1)
             //選択中の回答の値が設定した回答の値と同じなら
             {
                 resultLabel.Text = "正解！";
