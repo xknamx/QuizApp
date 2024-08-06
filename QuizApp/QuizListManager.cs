@@ -19,35 +19,57 @@ namespace QuizApp
 
         public void AddButtonClicked(object sender, EventArgs e)
         {
-            try
+            if (this.questionTextBox.Text == "")
             {
-                //DateTableにデータを追加する (追加した列の数と対応した引数で指定する)
-                quizDataSet.quizDataTable.AddquizDataTableRow(
-                this.questionTextBox.Text,
-                this.ans1TextBox.Text,
-                this.ans2TextBox.Text,
-                this.ans3TextBox.Text,
-                this.ans4TextBox.Text,
-
-
-                (SelectedAns() + 1).ToString());
-                ClearRadioButton();
-                SaveDate();
+                MessageBox.Show("問題が入力されていません");
             }
-            catch (System.FormatException)
+            else if (
+                this.ans1TextBox.Text == "" | this.ans2TextBox.Text == "" ||
+                this.ans3TextBox.Text == "" || this.ans4TextBox.Text == "")
             {
-                MessageBox.Show("入力に誤りがあります");
+                MessageBox.Show("回答が正しく入力されていません");
+            }
+            else if (this.ansRadioButton1.Checked == false &&
+                this.ansRadioButton2.Checked == false &&
+                this.ansRadioButton3.Checked == false &&
+                this.ansRadioButton4.Checked == false)
+            {
+                MessageBox.Show("回答が選択されていません");
+            }
+
+            else
+            {
+                try
+                {
+                    //DateTableにデータを追加する (追加した列の数と対応した引数で指定する)
+                    quizDataSet.quizDataTable.AddquizDataTableRow(
+                    this.questionTextBox.Text,
+                    this.ans1TextBox.Text,
+                    this.ans2TextBox.Text,
+                    this.ans3TextBox.Text,
+                    this.ans4TextBox.Text,
+                    (SelectedAns() + 1).ToString());
+
+                    SaveDate();                  //SaveDateメソッドを呼び出してJsonファイルに上書き保存
+                    ClearInputFields();
+                    //テキストボックスを空にする
+
+                }
+                catch (System.FormatException)
+                {
+                    MessageBox.Show("入力に誤りがあります");
+                }
             }
         }
-        
+
         //選択されたラジオボタンを回答として保存する
         public int SelectedAns()
         {
-            if (ansRadioButton1.Checked)return 0;
-            if (ansRadioButton2.Checked)return 1;
-            if (ansRadioButton3.Checked)return 2;
-            if (ansRadioButton4.Checked)return 3;
-            else{return -1;}
+            if (ansRadioButton1.Checked) return 0;
+            if (ansRadioButton2.Checked) return 1;
+            if (ansRadioButton3.Checked) return 2;
+            if (ansRadioButton4.Checked) return 3;
+            else { return -1; }
         }
 
         private void RemoveButtonClicked(object sender, EventArgs e)
@@ -55,6 +77,22 @@ namespace QuizApp
             //選択した行のデータを削除する
             int row = this.quizDataGrid.CurrentRow.Index;    //現在選択中の行のナンバーを取得しrow変数に代入
             this.quizDataGrid.Rows.RemoveAt(row);           //row行のデータを削除
+                                                            //テキストボックス内を空にする
+            ClearInputFields();
+            //Saveメソッドを使ってJSONファイルに上書き保存
+            SaveDate();
+        }
+
+
+        //テキストボックスを空にするメソッド
+        private void ClearInputFields()
+        {
+            this.questionTextBox.Clear();
+            this.ans1TextBox.Clear();
+            this.ans2TextBox.Clear();
+            this.ans3TextBox.Clear();
+            this.ans4TextBox.Clear();
+            
         }
 
         private void SaveDate()
@@ -101,7 +139,7 @@ namespace QuizApp
 
                     quizDataSet.quizDataTable.AddquizDataTableRow(
                         question.Text,
-                        option1,option2,option3,option4,
+                        option1, option2, option3, option4,
                         question.CorrectOption.ToString());
                 }
             }
@@ -139,14 +177,14 @@ namespace QuizApp
             ansRadioButton3.Text = "";
             ansRadioButton4.Text = "";
         }
-         private void ansRadioButton3Clicked(object sender, EventArgs e)
+        private void ansRadioButton3Clicked(object sender, EventArgs e)
         {
             ansRadioButton1.Text = "";
             ansRadioButton2.Text = "";
             ansRadioButton3.Text = "回答";
             ansRadioButton4.Text = "";
         }
-         private void ansRadioButton4Clicked(object sender, EventArgs e)
+        private void ansRadioButton4Clicked(object sender, EventArgs e)
         {
             ansRadioButton1.Text = "";
             ansRadioButton2.Text = "";

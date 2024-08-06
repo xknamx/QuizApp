@@ -56,6 +56,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();
             this.removeButton = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.quizDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quizDataTableBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quizDataSet)).BeginInit();
@@ -303,11 +304,21 @@
             this.removeButton.UseVisualStyleBackColor = true;
             this.removeButton.Click += new System.EventHandler(this.RemoveButtonClicked);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(533, 268);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(78, 15);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "正解を選択";
+            // 
             // QuizListManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(852, 450);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.removeButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.label6);
@@ -366,5 +377,6 @@
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button removeButton;
         private System.Windows.Forms.BindingSource quizDataTableBindingSource1;
+        private System.Windows.Forms.Label label7;
     }
 }
