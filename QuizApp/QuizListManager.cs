@@ -44,8 +44,7 @@ namespace QuizApp
                 {
                     if (row["問題文"].ToString() == this.questionTextBox.Text)
                     {
-                        MessageBox.Show("同じ問題がすでに存在します", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        ShowYesNoMessageBox();
                     }
                 }
 
@@ -61,6 +60,7 @@ namespace QuizApp
                     (SelectedAns() + 1).ToString());
 
                     SaveDate();                  //SaveDateメソッドを呼び出してJsonファイルに上書き保存
+                    ClearRadioButton();
                     ClearInputFields();
                     //テキストボックスを空にする
 
@@ -93,8 +93,16 @@ namespace QuizApp
             SaveDate();
         }
 
+        //ラジオボタンの選択を解除するメソッド
+        private void ClearRadioButton()
+        {
+            ansRadioButton1.Checked = false;
+            ansRadioButton2.Checked = false;
+            ansRadioButton3.Checked = false;
+            ansRadioButton4.Checked = false;
+        }
 
-        //テキストボックスを空にするメソッド
+        //テキストボックスを空にしてテキスト表示を消すメソッド
         private void ClearInputFields()
         {
             this.questionTextBox.Clear();
@@ -102,7 +110,12 @@ namespace QuizApp
             this.ans2TextBox.Clear();
             this.ans3TextBox.Clear();
             this.ans4TextBox.Clear();
-            
+
+            ansRadioButton1.Text = "";
+            ansRadioButton2.Text = "";
+            ansRadioButton3.Text = "";
+            ansRadioButton4.Text = "";
+
         }
 
         private void SaveDate()
@@ -171,7 +184,24 @@ namespace QuizApp
             }
         }
 
-     
+        //選択中のデータセット行の内容を上書きするメソッド
+        private void UpdateSelectedQuizRow()
+        {
+            //選択中の行を取得
+            var selectedRow = quizDataGrid.SelectedRows[0];     //選択されている行のうちの最初の行を指定する[0]
+
+            //取得した行のオブジェクトを取得するための型
+            DataRowView row = (DataRowView)selectedRow.DataBoundItem;
+
+            row["選択肢１"] = this.ans1TextBox.Text;
+            row["選択肢２"] = this.ans2TextBox.Text;
+            row["選択肢３"] = this.ans3TextBox.Text;
+            row["選択肢４"] = this.ans4TextBox.Text;
+            row["回答番号"] = (SelectedAns() + 1).ToString();
+
+        }
+
+
 
         //選択されたラジオボタンの横に回答と表示する
         private void ansRadioButton1Clicked(object sender, EventArgs e)
@@ -203,12 +233,29 @@ namespace QuizApp
             ansRadioButton4.Text = "回答";
         }
 
-        private void ClearRadioButton()
+        //メッセージボックスではい/いいえのに宅処理を行うメソッド
+        private void ShowYesNoMessageBox()
         {
-            ansRadioButton1.Text = "";
-            ansRadioButton2.Text = "";
-            ansRadioButton3.Text = "";
-            ansRadioButton4.Text = "";
+            // メッセージボックスを表示
+            DialogResult result = MessageBox.Show(
+                "同じ問題が存在します。内容を上書きしますか？",  // メッセージ
+                "確認",           // タイトル
+                MessageBoxButtons.YesNo, // ボタンオプション
+                MessageBoxIcon.Question // アイコンオプション
+            );
+
+            // ユーザーの選択に応じた処理
+            if (result == DialogResult.Yes)
+            {
+                // 「はい」が選択されたときの処理
+                //問題を上書きするメソッドを実行
+                UpdateSelectedQuizRow();
+            }
+            else if (result == DialogResult.No)
+            {
+                // 「いいえ」が選択された場合は処理をスルーする
+                return;
+            }
         }
 
     }
