@@ -125,7 +125,7 @@
             this.quizManagerViewMenu,
             this.exitMenu});
             this.メニューToolStripMenuItem.Name = "メニューToolStripMenuItem";
-            this.メニューToolStripMenuItem.Size = new System.Drawing.Size(65, 26);
+            this.メニューToolStripMenuItem.Size = new System.Drawing.Size(65, 24);
             this.メニューToolStripMenuItem.Text = "メニュー";
             // 
             // quizManagerViewMenu
@@ -150,7 +150,7 @@
             this.メニューToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(335, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(335, 28);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -170,7 +170,7 @@
             this.pictureBox1.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.ErrorImage")));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 300);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 323);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(60, 71);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -182,7 +182,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(335, 371);
+            this.ClientSize = new System.Drawing.Size(335, 394);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.quizCounter);
             this.Controls.Add(this.resultLabel);

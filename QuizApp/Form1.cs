@@ -19,6 +19,7 @@ namespace QuizApp
         private MediaPlayer mediaPlayerT;
         private MediaPlayer mediaPlayerF;
         int correctCount;       //正答数のカウント
+        Random random;
 
 
         public Form1()
@@ -43,12 +44,29 @@ namespace QuizApp
 
                 //読み取ったJSON文字列をBook型のリストbooksにデシリアライズ
                 questions = JsonConvert.DeserializeObject<List<Question>>(json);
+
+                ShuffleQuestion();
+
             }
             currentQuestionIndex = 0;
             //現在の問題番号の初期値に0を代入
 
         }
 
+        private void ShuffleQuestion()
+        {
+            //クイズの並びをシャッフルするメソッド
+            random = new Random();
+
+            for (int i = 0; i < questions.Count; i++)
+            {
+                int randomIndex = random.Next(questions.Count);
+                var temp = questions[i];
+                questions[i] = questions[randomIndex];
+                questions[randomIndex] = temp;
+
+            }
+        }
 
         private void DisplayQuestion()
         //クイズをフォームに表示するメソッド
@@ -61,6 +79,8 @@ namespace QuizApp
 
                 //questionLabelに問題文を表示
                 questionLabel.Text = question.Text;
+
+                
 
                 //設定した4択を渡してラジオボタンに表示させるメソッドを呼び出す
                 DisplayOptions(question.Options);
@@ -153,7 +173,7 @@ namespace QuizApp
         {
             if (quizListManager.Visible != true)
             {
-                //palletウィンドウが開いてない場合は新しくインスタンスを生成して開きなおす
+                //QuizManagerウィンドウが開いてない場合は新しくインスタンスを生成して開きなおす
                 this.quizListManager = new QuizListManager();
                 quizListManager.Show();
             }
