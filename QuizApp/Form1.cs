@@ -80,7 +80,8 @@ namespace QuizApp
                 //questionLabelに問題文を表示
                 questionLabel.Text = question.Text;
 
-                
+                //ラジオボタンの選択を解除するメソッド
+                RadioButtonClear();
 
                 //設定した4択を渡してラジオボタンに表示させるメソッドを呼び出す
                 DisplayOptions(question.Options);
@@ -92,7 +93,13 @@ namespace QuizApp
             }
         }
 
-       
+       private void RadioButtonClear()
+        {
+            option1RadioButton.Checked=false;
+            option2RadioButton.Checked=false;
+            option3RadioButton.Checked=false;
+            option4RadioButton.Checked=false;
+        }
 
         private void DisplayOptions(string[] options)
         {
