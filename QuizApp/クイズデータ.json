@@ -10,16 +10,6 @@
     "CorrectOption": 3
   },
   {
-    "Text": "２+２の答えは？",
-    "Options": [
-      "３",
-      "４",
-      "５",
-      "６"
-    ],
-    "CorrectOption": 2
-  },
-  {
     "Text": "日本一高い山は？",
     "Options": [
       "富士山",
@@ -98,5 +88,15 @@
       "367"
     ],
     "CorrectOption": 3
+  },
+  {
+    "Text": "２+２の答えは？",
+    "Options": [
+      "３",
+      "４",
+      "５",
+      "６"
+    ],
+    "CorrectOption": 2
   }
 ]

@@ -291,7 +291,7 @@
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(148, 50);
             this.addButton.TabIndex = 17;
-            this.addButton.Text = "追加";
+            this.addButton.Text = "追加／上書き";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.AddButtonClicked);
             // 

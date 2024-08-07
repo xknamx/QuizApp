@@ -44,7 +44,7 @@ namespace QuizApp
                 {
                     if (row["問題文"].ToString() == this.questionTextBox.Text)
                     {
-                        ShowYesNoMessageBox();
+                        ShowOverwriteConfirmationDialog();
                         return;
                     }
                 }
@@ -85,13 +85,8 @@ namespace QuizApp
 
         private void RemoveButtonClicked(object sender, EventArgs e)
         {
-            //選択した行のデータを削除する
-            int row = this.quizDataGrid.CurrentRow.Index;    //現在選択中の行のナンバーを取得しrow変数に代入
-            this.quizDataGrid.Rows.RemoveAt(row);           //row行のデータを削除
-                                                            //テキストボックス内を空にする
-            ClearInputFields();
-            //Saveメソッドを使ってJSONファイルに上書き保存
-            SaveDate();
+            //確認を行い選択に応じて削除するメソッドの呼び出し
+            ConfirmRemove();
         }
 
         //ラジオボタンの選択を解除するメソッド
@@ -241,7 +236,7 @@ namespace QuizApp
         }
 
         //メッセージボックスではい/いいえのに宅処理を行うメソッド
-        private void ShowYesNoMessageBox()
+        private void ShowOverwriteConfirmationDialog()
         {
             // メッセージボックスを表示
             DialogResult result = MessageBox.Show(
@@ -257,6 +252,34 @@ namespace QuizApp
                 // 「はい」が選択されたときの処理
                 //問題を上書きするメソッドを実行
                 UpdateSelectedQuizRow();
+            }
+            else if (result == DialogResult.No)
+            {
+                // 「いいえ」が選択された場合は処理をスルーする
+                return;
+            }
+        }
+
+        private void ConfirmRemove()
+        {
+            // メッセージボックスを表示
+            DialogResult result = MessageBox.Show(
+                "問題を削除してもよろしいですか？",  // メッセージ
+                "確認",           // タイトル
+                MessageBoxButtons.YesNo, // ボタンオプション
+                MessageBoxIcon.Question // アイコンオプション
+            );
+
+            // ユーザーの選択に応じた処理
+            if (result == DialogResult.Yes)
+            {
+                //選択した行のデータを削除する
+                int row = this.quizDataGrid.CurrentRow.Index;    //現在選択中の行のナンバーを取得しrow変数に代入
+                this.quizDataGrid.Rows.RemoveAt(row);           //row行のデータを削除
+                                                                //テキストボックス内を空にする
+                ClearInputFields();
+                //Saveメソッドを使ってJSONファイルに上書き保存
+                SaveDate();
             }
             else if (result == DialogResult.No)
             {
