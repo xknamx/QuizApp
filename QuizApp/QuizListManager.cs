@@ -45,6 +45,7 @@ namespace QuizApp
                     if (row["問題文"].ToString() == this.questionTextBox.Text)
                     {
                         ShowYesNoMessageBox();
+                        return;
                     }
                 }
 
@@ -191,13 +192,19 @@ namespace QuizApp
             var selectedRow = quizDataGrid.SelectedRows[0];     //選択されている行のうちの最初の行を指定する[0]
 
             //取得した行のオブジェクトを取得するための型
-            DataRowView row = (DataRowView)selectedRow.DataBoundItem;
+            var dateRowView = (DataRowView)selectedRow.DataBoundItem;
+            var row = dateRowView.Row;
 
             row["選択肢１"] = this.ans1TextBox.Text;
             row["選択肢２"] = this.ans2TextBox.Text;
             row["選択肢３"] = this.ans3TextBox.Text;
             row["選択肢４"] = this.ans4TextBox.Text;
             row["回答番号"] = (SelectedAns() + 1).ToString();
+
+            SaveDate();                  //SaveDateメソッドを呼び出してJsonファイルに上書き保存
+            ClearRadioButton();
+            ClearInputFields();
+            //テキストボックスを空にする
 
         }
 
