@@ -4,24 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.IO;
 
 
 namespace QuizApp
 {
-    public class ImageDraw
+    public class Image
     {
         //プロパティの定義
-        public Bitmap Image { get; set; }
+        public Bitmap Img { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
 
         //コンストラクタ
-        public ImageDraw(string imagePath,int x)
+        public Image(string imagePath,int x,int y)
         {
-            Image = new Bitmap(imagePath);
+            Img = new Bitmap(imagePath);
             X = x;
+            Y = y;
+            Width = 60;
+            Height = 60;
         }
+
+        //フォルダ内のPNG画像をすべて読み込んでimagesリストに格納するメソッド
+        public List<>
     }
 }
