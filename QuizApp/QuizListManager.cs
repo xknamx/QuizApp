@@ -206,34 +206,27 @@ namespace QuizApp
 
 
         //選択されたラジオボタンの横に回答と表示する
-        private void ansRadioButton1Clicked(object sender, EventArgs e)
+        //一つのメソッドを複数のイベントハンドラに設定することができる
+        private void ansRadioButtonClicked(object sender, EventArgs e)
         {
-            ansRadioButton1.Text = "回答";
-            ansRadioButton2.Text = "";
-            ansRadioButton3.Text = "";
-            ansRadioButton4.Text = "";
-        }
-        private void ansRadioButton2Clicked(object sender, EventArgs e)
-        {
-            ansRadioButton1.Text = "";
-            ansRadioButton2.Text = "回答";
-            ansRadioButton3.Text = "";
-            ansRadioButton4.Text = "";
-        }
-        private void ansRadioButton3Clicked(object sender, EventArgs e)
-        {
-            ansRadioButton1.Text = "";
-            ansRadioButton2.Text = "";
-            ansRadioButton3.Text = "回答";
-            ansRadioButton4.Text = "";
-        }
-        private void ansRadioButton4Clicked(object sender, EventArgs e)
-        {
+            //すべてのラジオボタンのテキストをリセット
             ansRadioButton1.Text = "";
             ansRadioButton2.Text = "";
             ansRadioButton3.Text = "";
-            ansRadioButton4.Text = "回答";
+            ansRadioButton4.Text = "";
+
+            RadioButton clickedRadioButton = sender as RadioButton;
+            //senderはイベントが発生したときにきっかけとなったコントロールオブジェクト
+            //asは型変換を行う演算子　senderオブジェクトをラジオボタン型に変換させる
+            //変換が失敗した場合はnullを返す
+
+            //変換が成功した場合
+            if (clickedRadioButton!=null)
+            {
+                clickedRadioButton.Text = "正答";
+            }
         }
+
 
         //メッセージボックスではい/いいえのに宅処理を行うメソッド
         private void ShowOverwriteConfirmationDialog()

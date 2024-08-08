@@ -169,7 +169,7 @@ namespace QuizApp
         }
 
 
-
+        
 
         private void ExitMenuClicked(object sender, EventArgs e)
         {

@@ -214,7 +214,7 @@
             this.ansRadioButton1.TabIndex = 9;
             this.ansRadioButton1.TabStop = true;
             this.ansRadioButton1.UseVisualStyleBackColor = true;
-            this.ansRadioButton1.CheckedChanged += new System.EventHandler(this.ansRadioButton1Clicked);
+            this.ansRadioButton1.CheckedChanged += new System.EventHandler(this.ansRadioButtonClicked);
             // 
             // ansRadioButton2
             // 
@@ -225,7 +225,7 @@
             this.ansRadioButton2.TabIndex = 10;
             this.ansRadioButton2.TabStop = true;
             this.ansRadioButton2.UseVisualStyleBackColor = true;
-            this.ansRadioButton2.CheckedChanged += new System.EventHandler(this.ansRadioButton2Clicked);
+            this.ansRadioButton2.CheckedChanged += new System.EventHandler(this.ansRadioButtonClicked);
             // 
             // ansRadioButton3
             // 
@@ -236,7 +236,7 @@
             this.ansRadioButton3.TabIndex = 11;
             this.ansRadioButton3.TabStop = true;
             this.ansRadioButton3.UseVisualStyleBackColor = true;
-            this.ansRadioButton3.CheckedChanged += new System.EventHandler(this.ansRadioButton3Clicked);
+            this.ansRadioButton3.CheckedChanged += new System.EventHandler(this.ansRadioButtonClicked);
             // 
             // ansRadioButton4
             // 
@@ -247,7 +247,7 @@
             this.ansRadioButton4.TabIndex = 12;
             this.ansRadioButton4.TabStop = true;
             this.ansRadioButton4.UseVisualStyleBackColor = true;
-            this.ansRadioButton4.CheckedChanged += new System.EventHandler(this.ansRadioButton4Clicked);
+            this.ansRadioButton4.CheckedChanged += new System.EventHandler(this.ansRadioButtonClicked);
             // 
             // label3
             // 
