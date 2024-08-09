@@ -5,6 +5,7 @@ using System.Windows.Media;
 using System.Media;
 using Newtonsoft.Json;
 using System.IO;
+using System.Drawing;
 
 
 namespace QuizApp
@@ -20,7 +21,10 @@ namespace QuizApp
         private MediaPlayer mediaPlayerF;
         int correctCount;       //正答数のカウント
         Random random;
-
+        List<Bitmap> bitmapImages;
+        List<Image> images;
+        public Bitmap currentImage;
+        //ランダムに選ばれたBitmapオブジェクトの宣言
 
         public Form1()
         {
@@ -28,6 +32,7 @@ namespace QuizApp
             RoadQuestion();
             DisplayQuestion();
             quizCounter.Text = $"1/{questions.Count}";
+            Image image;
 
             this.quizListManager = new QuizListManager();
             correctCount = 0;
@@ -68,6 +73,12 @@ namespace QuizApp
             }
         }
 
+        public int GetFormHeight()
+        {
+            return this.Height;
+        }
+
+
         private void DisplayQuestion()
         //クイズをフォームに表示するメソッド
         {
@@ -93,12 +104,12 @@ namespace QuizApp
             }
         }
 
-       private void RadioButtonClear()
+        private void RadioButtonClear()
         {
-            option1RadioButton.Checked=false;
-            option2RadioButton.Checked=false;
-            option3RadioButton.Checked=false;
-            option4RadioButton.Checked=false;
+            option1RadioButton.Checked = false;
+            option2RadioButton.Checked = false;
+            option3RadioButton.Checked = false;
+            option4RadioButton.Checked = false;
         }
 
         private void DisplayOptions(string[] options)
@@ -129,18 +140,19 @@ namespace QuizApp
             int selectOption = GetSelectedOption();
             //選択中のラジオボタンに応じて選択中の回答の値を代入するメソッドの戻り値を代入
 
-            if (selectOption == question.CorrectOption-1)
+            if (selectOption == question.CorrectOption - 1)
             //選択中の回答の値が設定した回答の値と同じなら
             {
                 resultLabel.Text = "正解！";
                 //正解音を流す
                 SoundPlayer player = new SoundPlayer("TrueAnswer.wav");
                 player.Play();
+
                 correctCount++;
             }
             else
             {
-                resultLabel.Text = "不正解。正しい答えは：" + question.Options[question.CorrectOption-1];
+                resultLabel.Text = "不正解。正しい答えは：" + question.Options[question.CorrectOption - 1];
                 //間違っていれば四択配列から回答番目の要素を取り出して表示する
                 SoundPlayer player = new SoundPlayer("FalseAnswer.wav");
                 player.Play();
@@ -168,8 +180,60 @@ namespace QuizApp
             //当てはまらない場合は-1を返す
         }
 
+        //フォルダ内のPNG画像をすべて読み込んでimagesリストに格納するメソッド
+        public List<Bitmap> LoadPngImage(string folderPath)
+        {
+            //Bitmap型の画像を格納するimagesリストを生成
+            bitmapImages = new List<Bitmap>();
 
-        
+            //引数に指定したファルダ内のpngファイルのファイル名をfiles配列に格納
+            string[] files = Directory.GetFiles(folderPath, "*.png");
+
+            //配列に格納したpngファイルをBitmap型にしてimagesリストに格納
+            foreach (string file in files)
+            {
+                Bitmap bitmapImage = new Bitmap(file);
+                bitmapImages.Add(bitmapImage);
+            }
+
+            return bitmapImages;
+        }
+
+        public void AddPiyo()
+        {
+            images = new List<Image>();
+
+            if (bitmapImages.Count > 0)
+            {
+                //imagesリストの中身が空でなければ
+                //imagesリストから一つランダムに取り出す
+                int index = random.Next(bitmapImages.Count);
+                string filepath = bitmapImages[index].ToString();
+
+                images.Add(new Image(filepath, GetFormHeight()));
+            }
+        }
+
+        int count = 0;
+        int X = 0;
+        protected override void OnPaint(PaintEventArgs e)
+        {
+
+            if (images != null)
+            {
+                base.OnPaint(e);
+                // 画像をフォームに描画
+                images[count].Draw
+
+                //メソッドが呼び出されるたびにXの位置を60ふやす
+                count++;
+                X = count * 60;
+            }
+        }
+
+       
+
+
 
         private void ExitMenuClicked(object sender, EventArgs e)
         {
@@ -192,7 +256,7 @@ namespace QuizApp
 
         }
 
-        
+
     }
 
 }
